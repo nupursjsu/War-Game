@@ -9,6 +9,7 @@ class Deck():
     def __init__(self, *args):
         if len(args) == 0:
             self.cards = self.fresh()
+            self.shuffle()
         elif len(args) == 1:
             # Create deck with the card(s) provided
             if isinstance(args[0], list):
@@ -19,7 +20,6 @@ class Deck():
                 raise Exception("Invalid input to init Deck", args[0])
         else:
             raise Exception("Invalid inputs to init Deck", args)
-        self.shuffle()
 
     def shuffle(self):
         random.shuffle(self.cards)
