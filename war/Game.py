@@ -38,8 +38,8 @@ if __name__ == "__main__":
     deck = Deck()
     playerDecks = deck.split()
     # Additional Shuffle
-    player1 = Player("Rahul", playerDecks[0].shuffle())
-    player2 = Player("Nupur", playerDecks[1].shuffle())
+    player1 = Player("Jenny", playerDecks[0].shuffle())
+    player2 = Player("John", playerDecks[1].shuffle())
     game = Game(player1, player2)
     game.start()
     game.summarize()

@@ -10,8 +10,8 @@ class TurnTestCase(unittest.TestCase):
         number = 1
         playerDeck1 = Deck(Card(Suite.SPADE, 10))
         playerDeck2 = Deck(Card(Suite.DIAMOND, 8))
-        player1 = Player("Rahul", playerDeck1)
-        player2 = Player("Nupur", playerDeck2)
+        player1 = Player("Jenny", playerDeck1)
+        player2 = Player("John", playerDeck2)
         turn = Turn(number, player1, player2)
         turn.start()
         self.assertEqual(0, turn.winner)
@@ -23,8 +23,8 @@ class TurnTestCase(unittest.TestCase):
         number = 2
         playerDeck1 = Deck([Card(Suite.SPADE, 8), Card(Suite.CLUB, 2), Card(Suite.CLUB, 'A'), Card(Suite.SPADE, 3), Card(Suite.HEART, 10)])
         playerDeck2 = Deck([Card(Suite.DIAMOND, 8), Card(Suite.CLUB, 3), Card(Suite.HEART, 'J'), Card(Suite.DIAMOND, 10), Card(Suite.SPADE, 5)])
-        player1 = Player("Rahul", playerDeck1)
-        player2 = Player("Nupur", playerDeck2)
+        player1 = Player("Jenny", playerDeck1)
+        player2 = Player("John", playerDeck2)
         turn = Turn(number, player1, player2)
         turn.start()
         self.assertEqual(True, turn.isWar)
@@ -40,8 +40,8 @@ class TurnTestCase(unittest.TestCase):
         playerDeck2 = Deck([Card(Suite.DIAMOND, 8), Card(Suite.CLUB, 3), Card(Suite.HEART, 'J'), Card(Suite.DIAMOND, 10),
                             Card(Suite.SPADE, 10), Card(Suite.SPADE, 5), Card(Suite.CLUB, 5), Card(Suite.CLUB, 6),
                             Card(Suite.SPADE, 'J')])
-        player1 = Player("Rahul", playerDeck1)
-        player2 = Player("Nupur", playerDeck2)
+        player1 = Player("Jenny", playerDeck1)
+        player2 = Player("John", playerDeck2)
         turn = Turn(number, player1, player2)
         turn.start()
         self.assertEqual(True, turn.isWar)
@@ -54,8 +54,8 @@ class TurnTestCase(unittest.TestCase):
         number = 2
         playerDeck1 = Deck([Card(Suite.SPADE, 8), Card(Suite.CLUB, 2), Card(Suite.CLUB, 'A')])
         playerDeck2 = Deck([Card(Suite.DIAMOND, 8), Card(Suite.CLUB, 3)])
-        player1 = Player("Rahul", playerDeck1)
-        player2 = Player("Nupur", playerDeck2)
+        player1 = Player("Jenny", playerDeck1)
+        player2 = Player("John", playerDeck2)
         turn = Turn(number, player1, player2)
         turn.start()
         self.assertEqual(True, turn.isWar)
@@ -69,14 +69,22 @@ class TurnTestCase(unittest.TestCase):
         playerDeck1 = Deck([Card(Suite.SPADE, 8), Card(Suite.CLUB, 2), Card(Suite.CLUB, 'A'), Card(Suite.SPADE, 3),
                             Card(Suite.HEART, 10)])
         playerDeck2 = Deck([Card(Suite.DIAMOND, 8), Card(Suite.CLUB, 3), Card(Suite.HEART, 'J'), Card(Suite.DIAMOND, 10)])
-        player1 = Player("Rahul", playerDeck1)
-        player2 = Player("Nupur", playerDeck2)
+        player1 = Player("Jenny", playerDeck1)
+        player2 = Player("John", playerDeck2)
         turn = Turn(number, player1, player2)
         turn.start()
         self.assertEqual(True, turn.isWar)
         self.assertEqual(0, turn.winner)
         self.assertEqual(9, len(player1.deck))
         self.assertEqual(0, len(player2.deck))
+
+    def helper_func_to_initialize_objects(self):
+        number = 1
+        player1 = Player("Jenny", playerDeck1)
+        player2 = Player("John", playerDeck2)
+        turn = Turn(number, player1, player2)
+        turn.start()
+
 
 
 if __name__ == '__main__':
