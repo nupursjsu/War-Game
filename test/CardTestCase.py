@@ -1,12 +1,12 @@
 import unittest
-from war.Card import Card, Suite
+from war.Card import spade, heart, diamond
 
 
 class CardTestCase(unittest.TestCase):
     def test_cmp_operators(self):
-        card1 = Card(Suite.SPADE, 8)
-        card2 = Card(Suite.HEART, 9)
-        card3 = Card(Suite.DIAMOND, 8)
+        card1 = spade(8)
+        card2 = heart(9)
+        card3 = diamond(8)
         self.assertTrue(card1 < card2)
         self.assertTrue(card1 <= card3)
         self.assertTrue(card1 == card3)
@@ -16,7 +16,8 @@ class CardTestCase(unittest.TestCase):
         self.assertFalse(card1 != card3)
 
     def test_str(self):
-        self.assertEquals("(8/♠)", str(Card(Suite.SPADE, 8)))
+        self.assertEquals("(8/♠)", str(spade(8)))
+
 
 if __name__ == '__main__':
     unittest.main()

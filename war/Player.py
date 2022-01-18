@@ -13,7 +13,6 @@ class Player:
     def playCard(self):
         return self.deck.top()
 
-    # TODO: Clean this up
     def offerWarPile(self):
         pile = []
         if len(self.deck) >= 3:

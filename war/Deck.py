@@ -4,8 +4,10 @@ from war.Card import Card, Suite
 
 
 class Deck():
-    # init Deck with 52 cards (by default)
-    # OR init with the cards provided
+    """
+    init Deck with 52 cards (by default)
+    OR init with the cards provided
+    """
     def __init__(self, *args):
         if len(args) == 0:
             self.cards = self.fresh()
@@ -24,6 +26,7 @@ class Deck():
     def shuffle(self):
         random.shuffle(self.cards)
         return self
+
     """
         Prepare a fresh deck of cards
     """
@@ -38,10 +41,12 @@ class Deck():
             cards.append(Card(suite, 'A'))
         return cards
 
-    # Add a Card/[Card]/Deck to the current Deck
+    """
+    Add a Card/[Card]/Deck to the current Deck
+    """
     def __iadd__(self, other):
         if isinstance(other, list):
-            self.cards.appendAll(other)
+            self.cards += other
         elif isinstance(other, Card):
             self.cards.append(other)
         elif isinstance(other, Deck):
@@ -64,10 +69,3 @@ class Deck():
         for card in self.cards:
             summary += str(card) + " "
         print(summary)
-
-
-if __name__ == "__main__":
-    # Test 2
-    deck = Deck(Card(Suite.SPADE, 6))
-    deck += Card(Suite.SPADE, 7)
-    print(len(deck))

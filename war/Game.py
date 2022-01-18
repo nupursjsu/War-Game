@@ -10,8 +10,11 @@ class Game:
         self.turns: [Turn] = []
         self.current = 0
 
+    """
+    Start the game and let the players play
+    """
     def start(self):
-        print("|Turn|State|Winner|LastBattle|Cards|")
+        print("| Turn | State | Winner | LastBattle | Cards |")
         while self.notEnded():
             self.current += 1
 
@@ -25,6 +28,7 @@ class Game:
             turn.start()
 
         self.winner = self.player1 if self.player2.cardCount() == 0 else self.player2
+        return self
 
     def notEnded(self):
         return self.player1.cardCount() > 0 and self.player2.cardCount() > 0
@@ -37,9 +41,6 @@ class Game:
 if __name__ == "__main__":
     deck = Deck()
     playerDecks = deck.split()
-    # Additional Shuffle
     player1 = Player("Jenny", playerDecks[0].shuffle())
     player2 = Player("John", playerDecks[1].shuffle())
-    game = Game(player1, player2)
-    game.start()
-    game.summarize()
+    Game(player1, player2).start().summarize()

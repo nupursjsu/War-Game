@@ -14,6 +14,9 @@ class Turn:
             self.winner = -1
             self.loser = -1
 
+    """
+    Start the turn and let the players play!
+    """
     def start(self):
         while self.notEnded():
             self.battles.append((self.players[0].playCard(), self.players[1].playCard()))
@@ -32,7 +35,9 @@ class Turn:
                 self.warPile += self.players[0].offerWarPile()
                 self.warPile += self.players[1].offerWarPile()
         self.declareWinner()
+        # Summarize each turn and print it
         print(self.summarize())
+        return self
 
     """
         In the unlikely event where players lost all their cards in the last war.
@@ -47,15 +52,19 @@ class Turn:
                 self.loser = 0 if self.winner == 1 else 1
         self.finishTurn()
 
+    """
+    Wraps up the turn by adding cards to the winner's (if there is one) deck 
+    """
     def finishTurn(self):
         if self.winner != -1:
             # Finish the turn by adding the cards from battle and warPile to the winner's deck
             for battle in self.battles:
                 self.players[self.winner].deck += battle[0]
                 self.players[self.winner].deck += battle[1]
-            for card in self.warPile:
-                self.players[self.winner].deck += card
+            self.players[self.winner].deck += self.warPile
 
+    """
+    """
     def notEnded(self):
         return self.players[0].cardCount() > 0 and self.players[1].cardCount() > 0
 

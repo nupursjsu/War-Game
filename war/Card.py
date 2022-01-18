@@ -8,8 +8,23 @@ class Suite(Enum):
     DIAMOND = '♦'
 
 
-class Card:
+def spade(value):
+    return Card(Suite.SPADE, value)
 
+
+def diamond(value):
+    return Card(Suite.DIAMOND, value)
+
+
+def heart(value):
+    return Card(Suite.HEART, value)
+
+
+def club(value):
+    return Card(Suite.CLUB, value)
+
+
+class Card:
     rankdict = {}
 
     def __init__(self, suite, value):
